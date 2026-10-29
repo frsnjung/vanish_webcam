@@ -71,6 +71,9 @@ model initialization on the test Mac.
 
 The current teleport launcher requires `teleport.wav` in the `macos/` folder.
 Supply a sound you have permission to use; it is not downloaded automatically.
+You can look for the teleport sound on YouTube Shorts by searching for
+"Goku Instant Transmission sound effect". Availability on YouTube does not grant
+permission to download, reuse, or redistribute a clip; check the rights first.
 For an M4A clip, replace the example input path below with your file:
 
 ```bash
