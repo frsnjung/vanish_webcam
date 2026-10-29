@@ -1,5 +1,12 @@
 # VanishCam — webcam disappearance effects
 
+## macOS and Microsoft Teams
+
+This fork adds Mac launchers and animated Goku-style teleportation. See the
+[macOS setup and Teams guide](macos/README.md) for installation, camera permissions,
+gestures, and user-supplied sound setup. The Windows instructions below describe
+the original upstream distribution; the Mac extension is in `macos/`.
+
 Video is processed on your computer. It is neither recorded nor sent to a server. The preview window and virtual camera show only the video and effects, without overlaid menus, instructions, or text.
 
 For step-by-step instructions in English and Italian, see the [user guide](USER_GUIDE_EN_IT.md).

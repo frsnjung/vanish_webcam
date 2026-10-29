@@ -1,0 +1,5 @@
+mediapipe==0.10.20
+opencv-contrib-python==4.11.0.86
+numpy==1.26.4
+pyvirtualcam==0.15.0
+pygame==2.6.1
