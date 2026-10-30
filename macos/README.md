@@ -113,7 +113,10 @@ Click the preview and press **R** to return or **Q** to quit.
 ## Use in Microsoft Teams
 
 1. Close any running VanishCam instance and keep OBS closed.
-2. Double-click one of the effect launchers listed below.
+2. Double-click one of the effect launchers listed below. Teleport lists cameras
+   in Terminal and asks for a number. Choose **MacBook Pro Camera** (or your
+   built-in camera's name). OBS Virtual Camera is excluded from the picker.
+   Enter `q` to cancel.
 3. Leave the camera's field of view for the first **four seconds** while the empty
    background is captured. Wait for the terminal's background-ready message.
 4. In Teams, open **Settings > Devices > Camera**, or the meeting camera settings,
@@ -181,7 +184,12 @@ downloads packages and models; terminal diagnostics are saved locally under `log
 | Other participants cannot hear the sound | Expected: audio is local, not routed through OBS Virtual Camera. |
 
 For Normal/Naruto with multiple webcams, run `./launch.sh --camera 1` or
-`./launch.sh --mode naruto --camera 1`. Teleport currently uses camera index 0.
+`./launch.sh --mode naruto --camera 1`. Teleport prompts for a camera on each run;
+use `./"Start Teleport.command" --camera 0` to bypass the prompt with an explicit index.
+Camera names are enumerated with Apple's Swift/AVFoundation tools. If those tools
+are unavailable, interactive selection stops rather than offering unfiltered devices;
+an explicit `--camera` override is available for a known physical camera. Device ordering
+can change when webcams are connected or disconnected.
 
 Diagnostics: `logs/latest.log` for Normal/Naruto/preview and `logs/teleport.log` for
 teleport. Model checks: `./launch.sh --check` and

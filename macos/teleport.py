@@ -16,6 +16,7 @@ from mediapipe.tasks.python import vision
 import vanish_cam as app
 from vanish_sound import VanishSound
 from teleport_effect import ANIMATION_SECONDS, render_teleport
+from camera_picker import choose_camera
 
 
 def forehead_pose(hands, faces, width: int, height: int) -> bool:
@@ -107,7 +108,11 @@ def create_trackers(resources: ExitStack):
 def run() -> None:
     parser = argparse.ArgumentParser(description="Animated Goku-style teleport for Teams")
     parser.add_argument("--self-test", action="store_true")
+    parser.add_argument("--camera", type=int, help="Camera index; omit to choose interactively")
     args = parser.parse_args()
+    camera_index = args.camera
+    if not args.self_test and camera_index is None:
+        camera_index = choose_camera()
     with ExitStack() as resources:
         sound = VanishSound(Path(__file__).resolve().parent / "teleport.wav")
         resources.callback(sound.close)
@@ -135,7 +140,7 @@ def run() -> None:
                     render_teleport(test_frame, test_frame, mask, progress, returning)
             print("Audio decoded; face, hand, segmentation, and both animations passed self-test.")
             return
-        capture = app.open_camera(0, 1280, 720)
+        capture = app.open_camera(camera_index, 1280, 720)
         resources.callback(capture.release)
         resources.callback(cv2.destroyAllWindows)
         cv2.namedWindow("VanishCam - Animated Goku", cv2.WINDOW_NORMAL)
